@@ -40,7 +40,7 @@
 ```
 go get -v github.com/jmdrws/golang_common
 ```
-2. 将配置文件拷贝到你的项目中，配置文件请参考：https://github.com/jmdrws/golang_common/tree/master/conf/dev
+2. 将配置文件拷贝到你的项目中，配置文件请参考：https://github.com/e421083458/golang_common/tree/master/conf/dev
 可以通过 InitModule("配置地址","模块数组") 方法按模块需加载配置。
 
 - base：包含日志和系统时间配置等
@@ -436,4 +436,5 @@ func TearDown()  {
  2. 只封装重复使用率高的功能。
  3. 拓展性强。
 
-你的 star ，我的动力。有任何关于类库的问题，请提交issue，谢谢。
+以上改编自https://github.com/e421083458/golang_common，为了尽可能多地了解这个第三方库的组成以及目前需要一个使用yaml配置文件的第三方库便于使用，但是由于自己水平不精，只能删改了部分代码，便于自己学习和使用。
+
