@@ -110,7 +110,11 @@ func InitBaseConf(path string) error {
 	logConf := dlog.LogConfig{
 		Level: ConfBase.Log.Level,
 		FW: dlog.ConfFileWriter{
-			On:              ConfBase.Log.FW.On,
+			//是在是不知道是什么原因了，已经翻到底层找到问题所在的那一块代码
+			//就是viper在读取on：true的时候，读成了true：true
+			//哎，不会改不想改 水平能力有限
+			//On:              ConfBase.Log.FW.On,
+			On:              true,
 			LogPath:         ConfBase.Log.FW.LogPath,
 			RotateLogPath:   ConfBase.Log.FW.RotateLogPath,
 			WfLogPath:       ConfBase.Log.FW.WfLogPath,

@@ -1,0 +1,17 @@
+base:
+  debug_mode: debug
+http:
+  addr: :8880
+log:
+  log_level: trace
+  file_writer:
+    on: true
+    log_path: ./personality-teaching.inf.log
+    rotate_log_path: ./personality-teaching.inf.log.%Y%M%D%H
+    wf_log_path: ./personality-teaching.wf.log
+    rotate_wf_log_path: ./personality-teaching.wf.log.%Y%M%D%H
+  console_writer:
+    on: false
+    color: false
+session:
+  redis_server: 127.0.0.1:6379
