@@ -5,7 +5,7 @@ import (
 )
 
 type ConfFileWriter struct {
-	On              bool   `yaml:"On"`
+	Up              bool   `yaml:"Up"`
 	LogPath         string `yaml:"LogPath"`
 	RotateLogPath   string `yaml:"RotateLogPath"`
 	WfLogPath       string `yaml:"WfLogPath"`
@@ -13,7 +13,7 @@ type ConfFileWriter struct {
 }
 
 type ConfConsoleWriter struct {
-	On    bool `yaml:"On"`
+	Up    bool `yaml:"Up"`
 	Color bool `yaml:"Color"`
 }
 
@@ -24,7 +24,7 @@ type LogConfig struct {
 }
 
 func SetupLogInstanceWithConf(lc LogConfig, logger *Logger) (err error) {
-	if lc.FW.On {
+	if lc.FW.Up {
 		if len(lc.FW.LogPath) > 0 {
 			w := NewFileWriter()
 			w.SetFileName(lc.FW.LogPath)
@@ -48,7 +48,7 @@ func SetupLogInstanceWithConf(lc LogConfig, logger *Logger) (err error) {
 		}
 	}
 
-	if lc.CW.On {
+	if lc.CW.Up {
 		w := NewConsoleWriter()
 		w.SetColor(lc.CW.Color)
 		logger.Register(w)

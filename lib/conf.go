@@ -23,7 +23,7 @@ type BaseConf struct {
 }
 
 type LogConfFileWriter struct {
-	On              bool   `mapstructure:"on"`
+	Up              bool   `mapstructure:"up"`
 	LogPath         string `mapstructure:"log_path"`
 	RotateLogPath   string `mapstructure:"rotate_log_path"`
 	WfLogPath       string `mapstructure:"wf_log_path"`
@@ -31,7 +31,7 @@ type LogConfFileWriter struct {
 }
 
 type LogConfConsoleWriter struct {
-	On    bool `mapstructure:"on"`
+	Up    bool `mapstructure:"up"`
 	Color bool `mapstructure:"color"`
 }
 
@@ -110,18 +110,17 @@ func InitBaseConf(path string) error {
 	logConf := dlog.LogConfig{
 		Level: ConfBase.Log.Level,
 		FW: dlog.ConfFileWriter{
-			//是在是不知道是什么原因了，已经翻到底层找到问题所在的那一块代码
-			//就是viper在读取on：true的时候，读成了true：true
-			//哎，不会改不想改 水平能力有限
-			//On:              ConfBase.Log.FW.On,
-			On:              true,
+			//在读取on：true的时候，读成了true：true
+			//有被自己蠢到 太久没用yaml了，语法都忘了
+			//在yaml里，用on、1、true来表示true，off、0、false来表示false
+			Up:              ConfBase.Log.FW.Up,
 			LogPath:         ConfBase.Log.FW.LogPath,
 			RotateLogPath:   ConfBase.Log.FW.RotateLogPath,
 			WfLogPath:       ConfBase.Log.FW.WfLogPath,
 			RotateWfLogPath: ConfBase.Log.FW.RotateWfLogPath,
 		},
 		CW: dlog.ConfConsoleWriter{
-			On:    ConfBase.Log.CW.On,
+			Up:    ConfBase.Log.CW.Up,
 			Color: ConfBase.Log.CW.Color,
 		},
 	}

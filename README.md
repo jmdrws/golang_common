@@ -240,14 +240,14 @@ func TestLogInstance(t *testing.T) {
 	logConf:= log.LogConfig{
 		Level:"trace",
 		FW: log.ConfFileWriter{
-			On:true,
+			Up:true,
 			LogPath:"./log_test.log",
 			RotateLogPath:"./log_test.log",
 			WfLogPath:"./log_test.wf.log",
 			RotateWfLogPath:"./log_test.wf.log",
 		},
 		CW: log.ConfConsoleWriter{
-			On:true,
+			Up:true,
 			Color:true,
 		},
 	}
